@@ -2,8 +2,12 @@ package com.cooksdev.constructionleveladnroid.ui.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -26,6 +30,8 @@ public class ConstructionLevelView extends View {
     private final int CENTERED_LINE_LENGTH = 50;
     private final int SIDE_LINE_LENGTH = 50;
     private final int START_ZERO = 0;
+    private final int HALF_STROKE_WIDTH = 8;
+    private final int X_Y_RADIUS = 12;
 
     private final int TEXT_SIZE = 35;
     private final int RIGHT_ANGLE = 90;
@@ -116,24 +122,71 @@ public class ConstructionLevelView extends View {
     private void drawLevelLine(Canvas canvas) {
         canvas.save();
         canvas.rotate(accelerationAngles.getXAngle(), CENTER_X, CENTER_Y);
-        canvas.drawLine(-HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, WIDTH + HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, levelLinePaint);
+        canvas.drawLine(
+                -HALF_SIZE_OF_LEVEL_LINE,
+                CENTER_Y,
+                WIDTH + HALF_SIZE_OF_LEVEL_LINE,
+                CENTER_Y,
+                levelLinePaint
+        );
         canvas.restore();
     }
 
     private void drawCenteredLines(Canvas canvas) {
-        canvas.drawLine(CENTER_X, CENTER_Y - CENTERED_LINE_LENGTH, CENTER_X, CENTER_Y + CENTERED_LINE_LENGTH, centeredLinesPaint);
-        canvas.drawLine(CENTER_X - CENTERED_LINE_LENGTH, CENTER_Y, CENTER_X + CENTERED_LINE_LENGTH, CENTER_Y, centeredLinesPaint);
+        RectF rectPortrait = new RectF(
+                CENTER_X - HALF_STROKE_WIDTH,
+                CENTER_Y - CENTERED_LINE_LENGTH,
+                CENTER_X + HALF_STROKE_WIDTH,
+                CENTER_Y + CENTERED_LINE_LENGTH
+        );
+
+        RectF rectHorizontal = new RectF(
+                CENTER_X - CENTERED_LINE_LENGTH,
+                CENTER_Y - HALF_STROKE_WIDTH,
+                CENTER_X + CENTERED_LINE_LENGTH,
+                CENTER_Y + HALF_STROKE_WIDTH
+        );
+
+        canvas.drawRoundRect(rectPortrait, X_Y_RADIUS, X_Y_RADIUS, centeredLinesPaint);
+        canvas.drawRoundRect(rectHorizontal, X_Y_RADIUS, X_Y_RADIUS, centeredLinesPaint);
     }
 
     private void drawSideLines(Canvas canvas) {
         // left
-        canvas.drawLine(START_ZERO, CENTER_Y, CENTERED_LINE_LENGTH, CENTER_Y, sideLinesPaint);
+        RectF leftRectF = new RectF(
+                START_ZERO,
+                CENTER_Y - HALF_STROKE_WIDTH,
+                CENTERED_LINE_LENGTH,
+                CENTER_Y + HALF_STROKE_WIDTH
+        );
+        canvas.drawRoundRect(leftRectF, X_Y_RADIUS, X_Y_RADIUS, sideLinesPaint);
+
         // right
-        canvas.drawLine(WIDTH - CENTERED_LINE_LENGTH, CENTER_Y, WIDTH, CENTER_Y, sideLinesPaint);
+        RectF rightRectF = new RectF(
+                WIDTH - CENTERED_LINE_LENGTH,
+                CENTER_Y - HALF_STROKE_WIDTH,
+                WIDTH,
+                CENTER_Y + HALF_STROKE_WIDTH
+        );
+        canvas.drawRoundRect(rightRectF, X_Y_RADIUS, X_Y_RADIUS, sideLinesPaint);
+
         // top
-        canvas.drawLine(CENTER_X, START_ZERO, CENTER_X, SIDE_LINE_LENGTH, sideLinesPaint);
+        RectF topRectF = new RectF(
+                CENTER_X - HALF_STROKE_WIDTH,
+                START_ZERO,
+                CENTER_X + HALF_STROKE_WIDTH,
+                SIDE_LINE_LENGTH
+        );
+        canvas.drawRoundRect(topRectF, X_Y_RADIUS, X_Y_RADIUS, sideLinesPaint);
+
         // bottom
-        canvas.drawLine(CENTER_X, HEIGHT - SIDE_LINE_LENGTH, CENTER_X, HEIGHT, sideLinesPaint);
+        RectF bottomRectF = new RectF(
+                CENTER_X - HALF_STROKE_WIDTH,
+                HEIGHT - SIDE_LINE_LENGTH,
+                CENTER_X + HALF_STROKE_WIDTH,
+                HEIGHT
+        );
+        canvas.drawRoundRect(bottomRectF, X_Y_RADIUS, X_Y_RADIUS, sideLinesPaint);
     }
 
     private void drawAcceleratorDegrees(Canvas canvas, AccelerationAngle degrees) {
