@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.cooksdev.constructionleveladnroid.R;
-import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
+import com.cooksdev.constructionleveladnroid.acceleration.model.AccelerationAngle;
 
 /**
  * Created by roma on 03.09.16.

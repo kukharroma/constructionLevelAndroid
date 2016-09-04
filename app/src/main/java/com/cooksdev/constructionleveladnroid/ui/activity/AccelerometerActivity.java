@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.cooksdev.constructionleveladnroid.R;
-import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
+import com.cooksdev.constructionleveladnroid.acceleration.model.AccelerationAngle;
 import com.cooksdev.constructionleveladnroid.presenter.AccelerometerPresenter;
 import com.cooksdev.constructionleveladnroid.ui.widget.ConstructionLevelView;
 

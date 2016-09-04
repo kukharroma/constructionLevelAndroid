@@ -1,4 +1,4 @@
-package com.cooksdev.constructionleveladnroid.model;
+package com.cooksdev.constructionleveladnroid.acceleration.model;
 
 /**
  * Created by roma on 03.09.16.

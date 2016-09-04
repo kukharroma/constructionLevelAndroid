@@ -1,7 +1,7 @@
 package com.cooksdev.constructionleveladnroid;
 
-import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
-import com.cooksdev.constructionleveladnroid.util.AccelerationUtil;
+import com.cooksdev.constructionleveladnroid.acceleration.model.AccelerationAngle;
+import com.cooksdev.constructionleveladnroid.acceleration.AccelerationUtil;
 
 import org.junit.Test;
 

@@ -1,9 +1,9 @@
-package com.cooksdev.constructionleveladnroid.util;
+package com.cooksdev.constructionleveladnroid.acceleration;
 
 import android.hardware.SensorEvent;
 
-import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
-import com.cooksdev.constructionleveladnroid.model.AccelerationVector;
+import com.cooksdev.constructionleveladnroid.acceleration.model.AccelerationAngle;
+import com.cooksdev.constructionleveladnroid.acceleration.model.AccelerationVector;
 
 /**
  * Created by roma on 03.09.16.
