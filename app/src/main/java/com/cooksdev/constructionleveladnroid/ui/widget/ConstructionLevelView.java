@@ -3,16 +3,14 @@ package com.cooksdev.constructionleveladnroid.ui.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.cooksdev.constructionleveladnroid.R;
-import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
+import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
 
 /**
  * Created by roma on 03.09.16.
@@ -43,7 +41,7 @@ public class ConstructionLevelView extends View {
     private String PORTRAIT_ORIENTATION;
     private String HORIZONTAL_ORIENTATION;
 
-    private AccelerationDegrees degrees;
+    private AccelerationAngle accelerationAngles;
 
     public ConstructionLevelView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -69,7 +67,7 @@ public class ConstructionLevelView extends View {
         drawCenteredLines(canvas);
         drawSideLines(canvas);
         drawLevelLine(canvas);
-        drawAcceleratorDegrees(canvas, degrees);
+        drawAcceleratorDegrees(canvas, accelerationAngles);
     }
 
     private void initPaints() {
@@ -110,14 +108,14 @@ public class ConstructionLevelView extends View {
         HALF_SIZE_OF_LEVEL_LINE = (int) Math.sqrt(Math.pow(CENTER_X, BINARY_POWER) + Math.pow(CENTER_Y, BINARY_POWER));
     }
 
-    public void updateView(AccelerationDegrees degrees) {
-        this.degrees = degrees;
+    public void updateView(AccelerationAngle degrees) {
+        this.accelerationAngles = degrees;
         invalidate();
     }
 
     private void drawLevelLine(Canvas canvas) {
         canvas.save();
-        canvas.rotate(degrees.getXTilt(), CENTER_X, CENTER_Y);
+        canvas.rotate(accelerationAngles.getXAngle(), CENTER_X, CENTER_Y);
         canvas.drawLine(-HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, WIDTH + HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, levelLinePaint);
         canvas.restore();
     }
@@ -138,9 +136,9 @@ public class ConstructionLevelView extends View {
         canvas.drawLine(CENTER_X, HEIGHT - SIDE_LINE_LENGTH, CENTER_X, HEIGHT, sideLinesPaint);
     }
 
-    private void drawAcceleratorDegrees(Canvas canvas, AccelerationDegrees degrees) {
-        String tiltX = String.valueOf(degrees.getXTilt());
-        String tiltY = String.valueOf(degrees.getYTilt());
+    private void drawAcceleratorDegrees(Canvas canvas, AccelerationAngle degrees) {
+        String tiltX = String.valueOf(degrees.getXAngle());
+        String tiltY = String.valueOf(degrees.getYAngle());
 
         String portrait = String.format(PORTRAIT_ORIENTATION, tiltX);
         String horizontal = String.format(HORIZONTAL_ORIENTATION, tiltY);

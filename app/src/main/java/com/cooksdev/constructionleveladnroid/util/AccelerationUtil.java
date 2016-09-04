@@ -2,10 +2,14 @@ package com.cooksdev.constructionleveladnroid.util;
 
 import android.hardware.SensorEvent;
 
-import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
+import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
+import com.cooksdev.constructionleveladnroid.model.AccelerationVector;
 
 /**
  * Created by roma on 03.09.16.
+ * <p/>
+ * Converts acceleration data from (X, Y, Z) axis to
+ * the angles of inclination of the device to the ground.
  */
 public class AccelerationUtil {
 
@@ -15,31 +19,53 @@ public class AccelerationUtil {
     private static int Y_AXIS_POSITION = 1;
     private static int Z_AXIS_POSITION = 2;
 
+    /**
+     * Return AccelerationAngle instance witch contains angles
+     * of inclination of the device to the ground.
+     *
+     * @param event {@link SensorEvent#values data}.
+     * @return {@link AccelerationAngle}
+     */
 
-    public static AccelerationDegrees getDegreesFromSensorEvent(SensorEvent event) {
-        return getDegreesFromAccelerationData(event.values);
+    public static AccelerationAngle getAnglesFromSensorEvent(SensorEvent event) {
+        return getAnglesFromAccelerationData(event.values);
     }
 
-    public static AccelerationDegrees getDegreesFromAccelerationData(float[] acceleration) {
+    /**
+     * Return AccelerationAngle instance witch contains angles
+     * of inclination of the device to the ground.
+     *
+     * @param acceleration data like this  {@link SensorEvent#values data}.
+     * @return {@link AccelerationAngle}
+     */
+    public static AccelerationAngle getAnglesFromAccelerationData(float[] acceleration) {
         float X_AXIS = acceleration[X_AXIS_POSITION];
         float Y_AXIS = acceleration[Y_AXIS_POSITION];
         float Z_AXIS = acceleration[Z_AXIS_POSITION];
 
-        double accelerationVector = getAccelerationVector(X_AXIS, Y_AXIS, Z_AXIS);
+        AccelerationVector accelerationVector = getAccelerationVector(X_AXIS, Y_AXIS, Z_AXIS);
 
-        X_AXIS = (float) (X_AXIS / accelerationVector);
-        Y_AXIS = (float) (Y_AXIS / accelerationVector);
+        X_AXIS = (float) (X_AXIS / accelerationVector.getVector());
+        Y_AXIS = (float) (Y_AXIS / accelerationVector.getVector());
 
         int xDegrees = (int) Math.round(Math.toDegrees(Math.atan2(X_AXIS, Y_AXIS)));
         int yDegrees = (int) Math.round(Math.toDegrees(Math.atan2(Y_AXIS, X_AXIS)));
 
-        return new AccelerationDegrees(xDegrees, yDegrees);
+        return new AccelerationAngle(xDegrees, yDegrees);
     }
 
-    private static double getAccelerationVector(float x, float y, float z) {
-        return Math.sqrt(Math.pow(x, BINARY_POWER)
+    /**
+     * Returns AccelerationVector from (X, Y, Z) axis
+     *
+     * @param x acceleration from X axis
+     * @param y acceleration from Y axis
+     * @param z acceleration from Z axis
+     * @return {@link AccelerationVector}
+     */
+    public static AccelerationVector getAccelerationVector(float x, float y, float z) {
+        return new AccelerationVector(Math.sqrt(Math.pow(x, BINARY_POWER)
                 + Math.pow(y, BINARY_POWER)
-                + Math.pow(z, BINARY_POWER));
+                + Math.pow(z, BINARY_POWER)));
     }
 
 }

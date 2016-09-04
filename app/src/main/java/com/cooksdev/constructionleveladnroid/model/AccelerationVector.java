@@ -2,19 +2,21 @@ package com.cooksdev.constructionleveladnroid.model;
 
 /**
  * Created by roma on 03.09.16.
+ *
+ * Represents value of acceleration vector.
  */
 public class AccelerationVector {
-    private double accelerationVector;
+    private double vector;
 
-    public AccelerationVector(double accelerationVector) {
-        this.accelerationVector = accelerationVector;
+    public AccelerationVector(double vector) {
+        this.vector = vector;
     }
 
-    public double getAccelerationVector() {
-        return accelerationVector;
+    public double getVector() {
+        return vector;
     }
 
-    public void setAccelerationVector(double accelerationVector) {
-        this.accelerationVector = accelerationVector;
+    public void setVector(double vector) {
+        this.vector = vector;
     }
 }

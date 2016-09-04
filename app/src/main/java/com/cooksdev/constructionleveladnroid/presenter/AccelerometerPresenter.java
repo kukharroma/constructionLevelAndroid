@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
+import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
 import com.cooksdev.constructionleveladnroid.ui.activity.AccelerometerActivity;
 import com.cooksdev.constructionleveladnroid.ui.activity.IAccelerometerView;
 import com.cooksdev.constructionleveladnroid.util.AccelerationUtil;
@@ -77,8 +77,8 @@ public class AccelerometerPresenter {
             ((AccelerometerActivity) view).runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    AccelerationDegrees accelerationDegrees = AccelerationUtil.getDegreesFromAccelerationData(sensorValues);
-                    view.updateDegreesInfo(accelerationDegrees);
+                    AccelerationAngle accelerationAngle = AccelerationUtil.getAnglesFromAccelerationData(sensorValues);
+                    view.updateDegreesInfo(accelerationAngle);
                 }
             });
         }

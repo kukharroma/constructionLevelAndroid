@@ -1,14 +1,10 @@
 package com.cooksdev.constructionleveladnroid.ui.activity;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.MainThread;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.TextView;
 
 import com.cooksdev.constructionleveladnroid.R;
-import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
+import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
 import com.cooksdev.constructionleveladnroid.presenter.AccelerometerPresenter;
 import com.cooksdev.constructionleveladnroid.ui.widget.ConstructionLevelView;
 
@@ -20,10 +16,9 @@ public class AccelerometerActivity extends AppCompatActivity implements IAcceler
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_construction_level);
         initComponents();
         presenter = new AccelerometerPresenter(this);
-
     }
 
     private void initComponents() {
@@ -43,7 +38,7 @@ public class AccelerometerActivity extends AppCompatActivity implements IAcceler
     }
 
     @Override
-    public void updateDegreesInfo(AccelerationDegrees degrees) {
+    public void updateDegreesInfo(AccelerationAngle degrees) {
         constructionLevelView.updateView(degrees);
     }
 

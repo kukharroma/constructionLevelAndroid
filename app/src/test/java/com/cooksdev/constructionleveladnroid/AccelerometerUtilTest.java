@@ -1,6 +1,6 @@
 package com.cooksdev.constructionleveladnroid;
 
-import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
+import com.cooksdev.constructionleveladnroid.model.AccelerationAngle;
 import com.cooksdev.constructionleveladnroid.util.AccelerationUtil;
 
 import org.junit.Test;
@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
  * Created by roma on 04.09.16.
  * <p/>
  * Tests AccelerometerUtil in different various
- * of angles in portrait and horizontal orientation
- * angles (0˚, 30˚, 45˚, 60˚, 90˚, 135˚, 180˚).
+ * of angles in portrait and horizontal orientation.
+ * Angles : 0˚, 30˚, 45˚, 60˚, 90˚, 135˚, 180˚.
  */
 public class AccelerometerUtilTest {
 
@@ -23,13 +23,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = 8.689789f;
         acceleration[2] = 2.704071f;
 
-        int xExpectedTilt = 0;
-        int yExpectedTilt = 90;
+        int xExpectedAngle = 0;
+        int yExpectedAngle = 90;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -39,13 +39,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = 7.2865753f;
         acceleration[2] = 4.0505676f;
 
-        int xExpectedTilt = 30;
-        int yExpectedTilt = 60;
+        int xExpectedAngle = 30;
+        int yExpectedAngle = 60;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -55,13 +55,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = 5.9599915f;
         acceleration[2] = 4.246811f;
 
-        int xExpectedTilt = 45;
-        int yExpectedTilt = 45;
+        int xExpectedAngle = 45;
+        int yExpectedAngle = 45;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -71,13 +71,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = 3.9336548f;
         acceleration[2] = 5.469208f;
 
-        int xExpectedTilt = 60;
-        int yExpectedTilt = 30;
+        int xExpectedAngle = 60;
+        int yExpectedAngle = 30;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -87,13 +87,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = -0.05117798f;
         acceleration[2] = 3.7922668f;
 
-        int xExpectedTilt = 90;
-        int yExpectedTilt = 0;
+        int xExpectedAngle = 90;
+        int yExpectedAngle = 0;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -103,13 +103,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = -6.5649567f;
         acceleration[2] = 3.600235f;
 
-        int xExpectedTilt = 135;
-        int yExpectedTilt = -45;
+        int xExpectedAngle = 135;
+        int yExpectedAngle = -45;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -119,13 +119,13 @@ public class AccelerometerUtilTest {
         acceleration[1] = -9.12262f;
         acceleration[2] = 3.9163666f;
 
-        int xExpectedTilt = 180;
-        int yExpectedTilt = -90;
+        int xExpectedAngle = 180;
+        int yExpectedAngle = -90;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
 
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        assertEquals(xExpectedAngle, actual.getXAngle());
+        assertEquals(yExpectedAngle, actual.getYAngle());
     }
 
     @Test
@@ -135,13 +135,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = -0.05630493f;
         acceleration[2] = 5.808563f;
 
-        int yExpectedTilt = 0;
-        int xExpectedTilt = 90;
+        int yExpectedAngle = 0;
+        int xExpectedAngle = 90;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-
-        assertEquals(xExpectedTilt, actual.getXTilt());
-        assertEquals(yExpectedTilt, actual.getYTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
     @Test
@@ -151,12 +150,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = 4.355362f;
         acceleration[2] = 3.984314f;
 
-        int yExpectedTilt = 30;
-        int xExpectedTilt = 60;
+        int yExpectedAngle = 30;
+        int xExpectedAngle = 60;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-        assertEquals(yExpectedTilt, actual.getYTilt());
-        assertEquals(xExpectedTilt, actual.getXTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
     @Test
@@ -166,12 +165,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = 5.9599915f;
         acceleration[2] = 4.246811f;
 
-        int yExpectedTilt = 45;
-        int xExpectedTilt = 45;
+        int yExpectedAngle = 45;
+        int xExpectedAngle = 45;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-        assertEquals(yExpectedTilt, actual.getYTilt());
-        assertEquals(xExpectedTilt, actual.getXTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
     @Test
@@ -181,12 +180,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = 7.200485f;
         acceleration[2] = 4.127533f;
 
-        int yExpectedTilt = 60;
-        int xExpectedTilt = 30;
+        int yExpectedAngle = 60;
+        int xExpectedAngle = 30;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-        assertEquals(yExpectedTilt, actual.getYTilt());
-        assertEquals(xExpectedTilt, actual.getXTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
     @Test
@@ -196,12 +195,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = 8.273331f;
         acceleration[2] = 3.719345f;
 
-        int yExpectedTilt = 90;
-        int xExpectedTilt = 0;
+        int yExpectedAngle = 90;
+        int xExpectedAngle = 0;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-        assertEquals(yExpectedTilt, actual.getYTilt());
-        assertEquals(xExpectedTilt, actual.getXTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
     @Test
@@ -211,12 +210,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = 5.226822f;
         acceleration[2] = 4.84552f;
 
-        int yExpectedTilt = 135;
-        int xExpectedTilt = -45;
+        int yExpectedAngle = 135;
+        int xExpectedAngle = -45;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-        assertEquals(yExpectedTilt, actual.getYTilt());
-        assertEquals(xExpectedTilt, actual.getXTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
     @Test
@@ -226,12 +225,12 @@ public class AccelerometerUtilTest {
         acceleration[1] = 0.06311035f;
         acceleration[2] = 3.8546753f;
 
-        int yExpectedTilt = 180;
-        int xExpectedTilt = -90;
+        int yExpectedAngle = 180;
+        int xExpectedAngle = -90;
 
-        AccelerationDegrees actual = AccelerationUtil.getDegreesFromAccelerationData(acceleration);
-        assertEquals(yExpectedTilt, actual.getYTilt());
-        assertEquals(xExpectedTilt, actual.getXTilt());
+        AccelerationAngle actual = AccelerationUtil.getAnglesFromAccelerationData(acceleration);
+        assertEquals(yExpectedAngle, actual.getYAngle());
+        assertEquals(xExpectedAngle, actual.getXAngle());
     }
 
 }
