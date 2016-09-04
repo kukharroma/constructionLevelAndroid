@@ -42,7 +42,7 @@ public class AccelerometerPresenter {
         }
         accelerometerTimer = new Timer();
         accelerometerTask = new AccelerometerTask();
-        accelerometerTimer.schedule(accelerometerTask, 0, 400);
+        accelerometerTimer.schedule(accelerometerTask, AccelerometerTask.START_NOW, AccelerometerTask.ACCELEROMETER_DELAY);
     }
 
     public void unregisterAccelerometer() {
@@ -51,8 +51,6 @@ public class AccelerometerPresenter {
     }
 
     float[] sensorValues = new float[3];
-    float[] mGravity;
-    float[] mGeomagnetic;
 
     class AccelerometerListener implements SensorEventListener {
         @Override
@@ -68,8 +66,10 @@ public class AccelerometerPresenter {
         }
     }
 
-
     class AccelerometerTask extends TimerTask {
+
+        public static final int ACCELEROMETER_DELAY = 500;
+        public static final int START_NOW = 0;
 
         @Override
         public void run() {
