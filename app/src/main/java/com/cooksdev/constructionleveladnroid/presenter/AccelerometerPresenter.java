@@ -8,6 +8,7 @@ import android.hardware.SensorManager;
 
 import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
 import com.cooksdev.constructionleveladnroid.ui.activity.AccelerometerActivity;
+import com.cooksdev.constructionleveladnroid.ui.activity.IAccelerometerView;
 import com.cooksdev.constructionleveladnroid.util.AccelerationUtil;
 
 import java.util.Timer;
@@ -18,7 +19,7 @@ import java.util.TimerTask;
  */
 public class AccelerometerPresenter {
 
-    private AccelerometerActivity view;
+    private IAccelerometerView view;
 
     private SensorManager sensorManager;
     private Sensor sensorAccelerometer;
@@ -33,7 +34,7 @@ public class AccelerometerPresenter {
 
     public void registerAccelerometer() {
         accelerometerListener = new AccelerometerListener();
-        sensorManager = (SensorManager) view.getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager) ((AccelerometerActivity) view).getSystemService(Context.SENSOR_SERVICE);
         sensorAccelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(accelerometerListener, sensorAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 
@@ -73,7 +74,7 @@ public class AccelerometerPresenter {
 
         @Override
         public void run() {
-            view.runOnUiThread(new Runnable() {
+            ((AccelerometerActivity) view).runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     AccelerationDegrees accelerationDegrees = AccelerationUtil.getDegreesFromAccelerationData(sensorValues);

@@ -12,7 +12,7 @@ import com.cooksdev.constructionleveladnroid.model.AccelerationDegrees;
 import com.cooksdev.constructionleveladnroid.presenter.AccelerometerPresenter;
 import com.cooksdev.constructionleveladnroid.ui.widget.ConstructionLevelView;
 
-public class AccelerometerActivity extends AppCompatActivity {
+public class AccelerometerActivity extends AppCompatActivity implements IAccelerometerView{
 
     private AccelerometerPresenter presenter;
     private ConstructionLevelView constructionLevelView;
@@ -42,7 +42,7 @@ public class AccelerometerActivity extends AppCompatActivity {
         presenter.unregisterAccelerometer();
     }
 
-
+    @Override
     public void updateDegreesInfo(AccelerationDegrees degrees) {
         constructionLevelView.updateView(degrees);
     }

@@ -32,7 +32,7 @@ public class ConstructionLevelView extends View {
     private final int RIGHT_ANGLE = 90;
     private final int TEXT_MARGIN = 50;
 
-    private final int POWER_OF_TWO = 2;
+    private final int BINARY_POWER = 2;
 
     private final Paint centeredLinesPaint = new Paint();
     private final Paint sideLinesPaint = new Paint();
@@ -101,7 +101,7 @@ public class ConstructionLevelView extends View {
         CENTER_Y = getHeight() / 2;
         WIDTH = getWidth();
         HEIGHT = getHeight();
-        HALF_SIZE_OF_LEVEL_LINE = (int) Math.sqrt(Math.pow(CENTER_X, POWER_OF_TWO) + Math.pow(CENTER_Y, POWER_OF_TWO));
+        HALF_SIZE_OF_LEVEL_LINE = (int) Math.sqrt(Math.pow(CENTER_X, BINARY_POWER) + Math.pow(CENTER_Y, BINARY_POWER));
     }
 
     public void updateView(AccelerationDegrees degrees) {
@@ -112,8 +112,7 @@ public class ConstructionLevelView extends View {
     private void drawLevelLine(Canvas canvas) {
         canvas.save();
         canvas.rotate(degrees.getXTilt(), CENTER_X, CENTER_Y);
-        canvas.drawLine(CENTER_X, CENTER_Y, -HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, levelLinePaint);
-        canvas.drawLine(CENTER_X, CENTER_Y, WIDTH + HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, levelLinePaint);
+        canvas.drawLine(-HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, WIDTH + HALF_SIZE_OF_LEVEL_LINE, CENTER_Y, levelLinePaint);
         canvas.restore();
     }
 
