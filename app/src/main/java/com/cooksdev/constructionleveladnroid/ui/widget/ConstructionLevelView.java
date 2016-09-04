@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -72,20 +73,25 @@ public class ConstructionLevelView extends View {
     }
 
     private void initPaints() {
-        final int CENTERED_LINE_WIDTH = 10;
-        final int SIDE_LINE_WIDTH = 10;
-        final int LEVEL_LINE_WIDTH = 6;
+        final int CENTERED_LINE_WIDTH = 14;
+        final int SIDE_LINE_WIDTH = 14;
+        final int LEVEL_LINE_WIDTH = 14;
+
+        final int CENTER_LINES_COLOR = ContextCompat.getColor(getContext(), R.color.centered_lines_color);
+        final int SIDE_LINES_COLOR = ContextCompat.getColor(getContext(), R.color.side_lines_color);
+        final int LEVEL_LINE_COLOR = ContextCompat.getColor(getContext(), R.color.level_line_color);
+        final int TEXT_COLOR = ContextCompat.getColor(getContext(), R.color.text_color);
 
         centeredLinesPaint.setStrokeWidth(CENTERED_LINE_WIDTH);
-        centeredLinesPaint.setColor(Color.BLUE);
+        centeredLinesPaint.setColor(CENTER_LINES_COLOR);
 
         sideLinesPaint.setStrokeWidth(SIDE_LINE_WIDTH);
-        sideLinesPaint.setColor(Color.BLUE);
+        sideLinesPaint.setColor(SIDE_LINES_COLOR);
 
         levelLinePaint.setStrokeWidth(LEVEL_LINE_WIDTH);
-        levelLinePaint.setColor(Color.RED);
+        levelLinePaint.setColor(LEVEL_LINE_COLOR);
 
-        textOrientationPaint.setColor(Color.WHITE);
+        textOrientationPaint.setColor(TEXT_COLOR);
         textOrientationPaint.setTextSize(TEXT_SIZE);
         textOrientationPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
     }
