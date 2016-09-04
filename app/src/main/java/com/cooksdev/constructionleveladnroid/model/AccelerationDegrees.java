@@ -12,19 +12,19 @@ public class AccelerationDegrees {
         this.yTilt = yTilt;
     }
 
-    public int getxTilt() {
+    public int getXTilt() {
         return xTilt;
     }
 
-    public void setxTilt(int xTilt) {
+    public void setXTilt(int xTilt) {
         this.xTilt = xTilt;
     }
 
-    public int getyTilt() {
+    public int getYTilt() {
         return yTilt;
     }
 
-    public void setyTilt(int yTilt) {
+    public void setYTilt(int yTilt) {
         this.yTilt = yTilt;
     }
 }

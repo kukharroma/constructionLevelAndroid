@@ -39,8 +39,8 @@ public class AccelerometerActivity extends AppCompatActivity {
         presenter.unregisterAccelerometer();
     }
 
-    public void updateDegreesInfo(AccelerationDegrees accelerationDegrees) {
-        constructionLevelView.updateView(accelerationDegrees.getxTilt());
+    public void updateDegreesInfo(AccelerationDegrees degrees) {
+        constructionLevelView.updateView(degrees);
     }
 
 }
