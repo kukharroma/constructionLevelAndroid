@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -24,9 +26,14 @@ public class ConstructionLevelView extends View {
     private final int SIDE_LINE_LENGTH = 50;
     private final int START_ZERO = 0;
 
+    private final int TEXT_SIZE = 35;
+    private final int RIGHT_ANGLE = 90;
+    private final int TEXT_MARGIN = 50;
+
     private Paint centeredLinesPaint = new Paint();
     private Paint sideLinesPaint = new Paint();
     private Paint levelLinePaint = new Paint();
+    private Paint textOrientationPaint = new Paint();
 
     private String PORTRAIT_ORIENTATION;
     private String HORIZONTAL_ORIENTATION;
@@ -73,7 +80,10 @@ public class ConstructionLevelView extends View {
 
         levelLinePaint.setStrokeWidth(LEVEL_LINE_WIDTH);
         levelLinePaint.setColor(Color.RED);
-        levelLinePaint.setTextSize(25);
+
+        textOrientationPaint.setColor(Color.WHITE);
+        textOrientationPaint.setTextSize(TEXT_SIZE);
+        textOrientationPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
     }
 
     private void initStringResources() {
@@ -97,8 +107,8 @@ public class ConstructionLevelView extends View {
     private void drawLevelLine(Canvas canvas) {
         canvas.save();
         canvas.rotate(degrees.getXTilt(), CENTER_X, CENTER_Y);
-        canvas.drawLine(CENTER_X, CENTER_Y, WIDTH, CENTER_Y, levelLinePaint);
         canvas.drawLine(CENTER_X, CENTER_Y, START_ZERO, CENTER_Y, levelLinePaint);
+        canvas.drawLine(CENTER_X, CENTER_Y, WIDTH, CENTER_Y, levelLinePaint);
         canvas.restore();
     }
 
@@ -125,8 +135,13 @@ public class ConstructionLevelView extends View {
         String portrait = String.format(PORTRAIT_ORIENTATION, tiltX);
         String horizontal = String.format(HORIZONTAL_ORIENTATION, tiltY);
 
-        canvas.drawText(portrait, 50, 50, levelLinePaint);
-        canvas.drawText(horizontal, 50, 150, levelLinePaint);
+        canvas.drawText(portrait, TEXT_MARGIN, TEXT_MARGIN, textOrientationPaint);
+
+        canvas.save();
+        canvas.rotate(RIGHT_ANGLE, WIDTH - TEXT_MARGIN, TEXT_MARGIN);
+        canvas.drawText(horizontal, WIDTH - TEXT_MARGIN, TEXT_MARGIN, textOrientationPaint);
+        canvas.restore();
+
     }
 
 }

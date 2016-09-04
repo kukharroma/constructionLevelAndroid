@@ -51,6 +51,8 @@ public class AccelerometerPresenter {
     }
 
     float[] sensorValues = new float[3];
+    float[] mGravity;
+    float[] mGeomagnetic;
 
     class AccelerometerListener implements SensorEventListener {
         @Override
@@ -65,6 +67,7 @@ public class AccelerometerPresenter {
 
         }
     }
+
 
     class AccelerometerTask extends TimerTask {
 

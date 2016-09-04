@@ -1,7 +1,10 @@
 package com.cooksdev.constructionleveladnroid.ui.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.MainThread;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.cooksdev.constructionleveladnroid.R;
@@ -38,6 +41,7 @@ public class AccelerometerActivity extends AppCompatActivity {
         super.onPause();
         presenter.unregisterAccelerometer();
     }
+
 
     public void updateDegreesInfo(AccelerationDegrees degrees) {
         constructionLevelView.updateView(degrees);
