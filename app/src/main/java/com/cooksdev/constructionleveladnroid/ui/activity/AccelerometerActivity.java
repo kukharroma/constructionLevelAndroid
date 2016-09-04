@@ -12,8 +12,6 @@ import com.cooksdev.constructionleveladnroid.ui.widget.ConstructionLevelView;
 public class AccelerometerActivity extends AppCompatActivity {
 
     private AccelerometerPresenter presenter;
-
-    private TextView tvXdegrees, tvYdegrees;
     private ConstructionLevelView constructionLevelView;
 
     @Override
@@ -26,8 +24,6 @@ public class AccelerometerActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        tvXdegrees = (TextView) findViewById(R.id.xyValue);
-        tvYdegrees = (TextView) findViewById(R.id.xzValue);
         constructionLevelView = (ConstructionLevelView) findViewById(R.id.constructionLevel);
     }
 
@@ -44,9 +40,6 @@ public class AccelerometerActivity extends AppCompatActivity {
     }
 
     public void updateDegreesInfo(AccelerationDegrees accelerationDegrees) {
-        tvXdegrees.setText(String.valueOf(accelerationDegrees.getxTilt()));
-        tvYdegrees.setText(String.valueOf(accelerationDegrees.getyTilt()));
-
         constructionLevelView.updateView(accelerationDegrees.getxTilt());
     }
 
