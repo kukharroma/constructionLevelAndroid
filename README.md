@@ -1,7 +1,8 @@
 # Construction level android
 
-## Description
-This app shows angles of inclination of the device to the ground.
+## Description 
+Donwload here [play market] [construction-level].
+<p> This app shows angles of inclination of the device to the ground.
 <p> The app uses an accelerometer, so you should have it on your device.
 
 <img src="/app/src/main/assets/1.png">
@@ -38,3 +39,4 @@ Install on device
 [java]: http://www.oracle.com/technetwork/java/javase/overview/index.html
 [android sdk]: https://developer.android.com/intl/ru/sdk/index.html
 [github-kukharoma]: https://github.com/kukharroma
+[construction-level]: https://play.google.com/store/apps/details?id=com.cooksdev.constructionleveladnroid
