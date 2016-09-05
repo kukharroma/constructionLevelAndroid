@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">constructionLevelAndroid</string>
+    <string name="app_name">Construction Level</string>
     <string name="orientation_portrait">PORTRAIT:  %1$s ˚</string>
     <string name="orientation_horizontal">HORIZONTAL: %1$s ˚</string>
 
