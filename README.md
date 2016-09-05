@@ -3,6 +3,12 @@
 ## Description
 This application shows angles of inclination of the device to the ground.
 
+<img src="/app/src/main/assets/1.png">
+<img src="/app/src/main/assets/2.png">
+<img src="/app/src/main/assets/3.png">
+<img src="/app/src/main/assets/4.png">
+<img src="/app/src/main/assets/5.png">
+
 ## Requirements
 Install the following software:
 
