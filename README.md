@@ -1,7 +1,8 @@
 # Construction level android
 
 ## Description
-This application shows angles of inclination of the device to the ground.
+This app shows angles of inclination of the device to the ground.
+<p> App uses accelerometer, so you should have it on your device.
 
 <img src="/app/src/main/assets/1.png">
 <img src="/app/src/main/assets/2.png">
